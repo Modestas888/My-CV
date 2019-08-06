@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "../Title";
 import PropTypes from "prop-types";
+import Title from "../Title";
 import "./index.scss";
 
 function InfoContainer({ children, title, className }) {

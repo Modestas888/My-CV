@@ -1,6 +1,6 @@
 import React from "react";
 import InfoContainer from "../InfoContainer";
-import { profile, skills, contacts, education, expierence } from "./data";
+import content from "./data";
 import "./index.scss";
 
 function Item(data, index) {
@@ -17,25 +17,12 @@ function Item(data, index) {
     </li>
   );
 }
-// function LisItem({ label, text, href, target = "_self" }, index) {
-//   const props =
-//     target === "_blank" ? { target, rel: "noopener noreferrer" } : { target };
 
-//   return (
-//     <li key={index}>
-//       <label>{label}</label>
-//       {href ? (
-//         <a href={href} {...props}>
-//           {text}
-//         </a>
-//       ) : (
-//         <span>{text}</span>
-//       )}
-//     </li>
-//   );
-// }
+function Main({ language }) {
+  const { profile, contacts, skills, education, experience } = content[
+    language
+  ];
 
-function Main() {
   return (
     <main className="Main">
       <section className="Main--section">
@@ -46,7 +33,7 @@ function Main() {
           title={contacts.title}
           className="Main--section-contacts"
         >
-          <ul>{contacts.content.map(LisItem)}</ul>
+          <ul>{contacts.content.map(Item)}</ul>
         </InfoContainer>
         <InfoContainer title={skills.title} className="Main--section-skills">
           <ul>{skills.content.map(Item)}</ul>
@@ -57,13 +44,13 @@ function Main() {
           title={education.title}
           className="Main--section-education"
         >
-          <ul> {education.content.map(Item)}</ul>
+          <ul>{education.content.map(Item)}</ul>
         </InfoContainer>
         <InfoContainer
-          title={expierence.title}
+          title={experience.title}
           className="Main--section-experience"
         >
-          <ul>{expierence.content.map(Item)}</ul>
+          <ul>{experience.content.map(Item)}</ul>
         </InfoContainer>
       </section>
     </main>
